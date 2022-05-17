@@ -15,7 +15,6 @@
 		CD9EC2B8282FF20F00AFE302 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */; };
 		CD9EC2BA2830212C00AFE302 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2B92830212C00AFE302 /* HomeView.swift */; };
 		CD9EC2BC28311DAD00AFE302 /* NewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */; };
-		CD9EC2C42831519B00AFE302 /* TestHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2C32831519B00AFE302 /* TestHomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +27,6 @@
 		CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		CD9EC2B92830212C00AFE302 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripView.swift; sourceTree = "<group>"; };
-		CD9EC2C32831519B00AFE302 /* TestHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +81,6 @@
 			children = (
 				394887CA282B872E0008B340 /* OnBoardingView.swift */,
 				CD9EC2B92830212C00AFE302 /* HomeView.swift */,
-				CD9EC2C32831519B00AFE302 /* TestHomeView.swift */,
 				CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */,
 				CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */,
 			);
@@ -163,7 +160,6 @@
 				CD9EC2B8282FF20F00AFE302 /* SplashScreen.swift in Sources */,
 				394887CB282B872E0008B340 /* OnBoardingView.swift in Sources */,
 				394887BE282B870A0008B340 /* ContentView.swift in Sources */,
-				CD9EC2C42831519B00AFE302 /* TestHomeView.swift in Sources */,
 				394887BC282B870A0008B340 /* TravoilaApp.swift in Sources */,
 				CD9EC2BA2830212C00AFE302 /* HomeView.swift in Sources */,
 				CD9EC2BC28311DAD00AFE302 /* NewTripView.swift in Sources */,

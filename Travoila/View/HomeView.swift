@@ -7,10 +7,12 @@
 
 import SwiftUI
 
-struct Homescreen: View {
+struct HomeView: View {
+    
+    @State var isNoTrip: Bool = false
     
     var body: some View {
-        VStack {
+        VStack (spacing: isNoTrip ? 0 : 200) {
             ZStack (alignment: .top) {
                 Rectangle()
                     .frame(width: .infinity, height: 120)
@@ -45,30 +47,43 @@ struct Homescreen: View {
                     .frame(width: 280, height: 50)
                     .font(.system(size: 16,weight: .thin))
                 
-                Button(action: {
-                    
-                }) { Section {
+                Spacer()
+                    .frame(height: 30)
+                
+                NavigationLink(destination: Newtrip()){
                     Text("Create Budget Trip")
-                        .foregroundColor(Color.white)
-                        .padding(.horizontal)
-                        .padding(.vertical, 15.0)
-                        .frame(minWidth:0,  maxWidth: .infinity, alignment: .top)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(lineWidth: 0)
-                                .background(Color("CustomColor").cornerRadius(10)))
+                        .bold()
+                        .padding(.horizontal, 30.0)
+                        .padding(.vertical, 20.0)
+                        .background(Color("CustomColor"))
+                        .foregroundColor(.white)
+                        .cornerRadius(10.0)
                 }
-                .frame(minWidth:0, maxWidth: 200, alignment: .top)
-                }
+                
+//                Button(action: {
+//
+//                }) { Section {
+//                    Text("Create Budget Trip")
+//                        .foregroundColor(Color.white)
+//                        .padding(.horizontal)
+//                        .padding(.vertical, 15.0)
+//                        .frame(minWidth:0,  maxWidth: .infinity, alignment: .top)
+//                        .background(
+//                            RoundedRectangle(cornerRadius: 10)
+//                                .stroke(lineWidth: 0)
+//                                .background(Color("CustomColor").cornerRadius(10)))
+//                }
+//                .frame(minWidth:0, maxWidth: 200, alignment: .top)
+//                }
             }
             
         }
-        
+        .offset(y: -40.0)
     }
 }
 
-struct Homescreen_Previews: PreviewProvider {
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        Homescreen()
+        HomeView()
     }
 }
