@@ -87,8 +87,8 @@ struct HomeView: View {
         }
     }
     
-    func toogleAddNewBudgetTrip() -> Void {
-        isAddNewBudgetTrip = !isAddNewBudgetTrip
+//    func toogleAddNewBudgetTrip() -> Void {
+//        isAddNewBudgetTrip = !isAddNewBudgetTrip
     }
 }
 
