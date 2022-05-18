@@ -87,10 +87,10 @@ struct HomeView: View {
 //        }
 //    }
 
-    func toogleAddNewBudgetTrip() -> Void {
-        isAddNewBudgetTrip = !isAddNewBudgetTrip
-    }
-}
+//    func toogleAddNewBudgetTrip() -> Void {
+//        isAddNewBudgetTrip = !isAddNewBudgetTrip
+//    }
+//}
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
