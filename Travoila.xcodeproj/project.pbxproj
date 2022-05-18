@@ -84,8 +84,8 @@
 				CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */,
 				394887CA282B872E0008B340 /* OnBoardingView.swift */,
 				CD9EC2B92830212C00AFE302 /* HomeView.swift */,
-				CD3982922833BAA800E46A9D /* AddExpenses.swift */,
 				CD398299283532F700E46A9D /* NewTripView.swift */,
+				CD3982922833BAA800E46A9D /* AddExpenses.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
