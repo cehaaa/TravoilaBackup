@@ -16,14 +16,15 @@ struct TabContainerView: View {
         TabView {
             HomeView(isNoTrip: $isNoTrip, trips: $trips)
                 .tabItem {
-                    Label("Menu", systemImage: "list.dash")
+                    Label("Home", systemImage: "house")
                 }
             
             Text("My trip")
                 .tabItem {
-                    Label("Menu", systemImage: "list.dash")
+                    Label("My Trips", systemImage: "airplane.circle")
                 }
         }
+        .accentColor(Color("CustomColor"))
     }
 }
 
@@ -32,26 +33,38 @@ struct HomeView: View {
     @Binding var isNoTrip: Bool
     @Binding var trips: [Trip]
     
+//    @State var 
+    
     var body: some View {
-        VStack (spacing: isNoTrip ? 200 : 0) {
+        VStack (spacing: isNoTrip ? 150 : 0) {
             ZStack (alignment: .top) {
-                Rectangle()
-                    .frame(width: .infinity, height: 120)
-                    .foregroundColor(Color.gray.opacity(0.1))
+//                Rectangle()
+                Image("Home")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 390, height: 120)
+//                    .foregroundColor(Color.gray.opacity(1))
                     .ignoresSafeArea()
 
                 HStack {
                     Text("Budget Trip")
-                        .frame(width: 170, height: 30, alignment: .leading)
+                        .frame(width: 170, height: 70, alignment: .leading)
                         .font(.system(size: 28, weight: .bold))
+                        
 
                     Spacer()
-
+//                        .background(Color.orange)
+                    
+                    NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)) {
                     Image(systemName: "plus")
                         .font(.title)
                         .foregroundColor(Color("CustomColor"))
+                    }
                 }
+                .offset(y: -30)
                 .padding(.all)
+//                .padding(.bottom, 50)
+//                    .background(Color.red)
             }
 
             ScrollView {
@@ -62,6 +75,7 @@ struct HomeView: View {
 
                     Spacer()
                         .frame(height: 10)
+                        .background(Color.orange)
 
                     Text("You have not created any budget trip expenses yet")
                         .multilineTextAlignment(.center)
@@ -69,7 +83,8 @@ struct HomeView: View {
                         .font(.system(size: 16,weight: .thin))
 
                     Spacer()
-                        .frame(height: 30)
+                        .frame(height: 10)
+                        .background(Color.orange)
                     
                     NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)){
                         Text("Create Budget Trip")
@@ -108,6 +123,7 @@ struct HomeView: View {
                                         .foregroundColor(.green)
 
                                     Spacer()
+                                        .background(Color.orange)
                                     
                                     Text("0 of 15,000,000 spent")
                                 }
@@ -115,10 +131,11 @@ struct HomeView: View {
                             }
                         }
                         .padding()
+//                        .background(Color.blue)
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         
                         NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)){
-                            Text("Add Exapanse")
+                            Text("Add Expense")
                                 .bold()
                                 .frame(width: 340, height: 50)
                                 .background(Color("CustomColor"))
@@ -132,9 +149,9 @@ struct HomeView: View {
 
             }
             .frame(minWidth: 0, maxWidth: .infinity)
-            .padding(.horizontal, 20)
+//            .padding(.horizontal, 20)
         }
-        .offset(y: -40.0)
+//        .offset(y: -40.0)
     }
 }
 

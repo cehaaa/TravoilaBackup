@@ -7,6 +7,18 @@
 
 import SwiftUI
 
+//class NumbersOnly: ObservableObject {
+//    @Published var value = "" {
+//        didSet {
+//            let filtered = value.filter { $0.isNumber }
+//
+//            if value != filtered {
+//                value = filtered
+//            }
+//        }
+//    }
+//}
+
 struct NewTripView: View {
     
     @State var tripTitle: String = ""
@@ -16,6 +28,8 @@ struct NewTripView: View {
     @State var endDate: Date = Date()
     
     @State var totalBudgetEstimation: String = ""
+//    @ObservedObject var input = NumbersOnly()
+    @State var listRowColor: Color = Color.gray.opacity(0.1)
     
     @Binding var trips: [Trip]
     @Binding var isNoTrip: Bool
@@ -27,20 +41,34 @@ struct NewTripView: View {
             Form {
                 Section ( header: Text("Trip Title")) {
                     TextField("Trip Title", text: $tripTitle)
+                        .listRowBackground(listRowColor)
                 }
 
                 Section ( header: Text("Trip Destination")) {
                     TextField("Trip Destination", text: $tripDestination)
+                        .listRowBackground(listRowColor)
                 }
 
                 Section(header: Text("Date")){
                     DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+                        .listRowBackground(listRowColor)
                     DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+                        .listRowBackground(listRowColor)
                 }
 
                 Section(header: Text("Total Budget Estimation")){
-                    TextField("IDR 0",text: $totalBudgetEstimation)
+                    TextField("IDR 0",text: /*$input.value*/$totalBudgetEstimation)
+                        .listRowBackground(listRowColor)
+                        .keyboardType(.decimalPad)
                 }
+            }
+            .navigationBarTitle("New Trip", displayMode: .inline)
+            .background(Color.white)
+            .onAppear {
+                UITableView.appearance().backgroundColor = .clear
+            }
+            .onDisappear {
+                UITableView.appearance().backgroundColor = .systemGroupedBackground
             }
 
             Button(action: {
@@ -55,7 +83,7 @@ struct NewTripView: View {
             }
             .frame(minWidth:0,  maxWidth: .infinity)
         }
-        .background(Color.gray.opacity(0.1))
+        .background(Color.white)
     }
     
     func createNewTrip(){
