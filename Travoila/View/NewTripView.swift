@@ -17,57 +17,65 @@ struct Newtrip: View {
     
     @State var totalBudgetEstimation: String = ""
     
-    var body: some View {
-        
-//        ScrollView(.vertical) {
-//            VStack (alignment: .leading) {
-//                VStack {
-//                    Text("Trip Title")
-//                    TextField("Trip Title", text: $tripTitle)
-//                        .textFieldStyle(.roundedBorder)
-//                }
-//
-//            }
-//            .frame(minHeight: 0, maxHeight: .infinity)
-//        }
+    @Binding var trips: [Trip]
+    @Binding var isNoTrip: Bool
     
-        
-        Form {
-            Section ( header: Text("Trip Title")) {
-                TextField("Trip Title", text: $tripTitle)
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+
+    
+    var body: some View {
+        VStack {
+            Form {
+                Section ( header: Text("Trip Title")) {
+                    TextField("Trip Title", text: $tripTitle)
+                }
+
+                Section ( header: Text("Trip Destination")) {
+                    TextField("Trip Destination", text: $tripDestination)
+                }
+
+                Section(header: Text("Date")){
+                    DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+                    DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+                }
+
+                Section(header: Text("Total Budget Estimation")){
+                    TextField("IDR 0",text: $totalBudgetEstimation)
+                }
             }
 
-            Section ( header: Text("Trip Destination")) {
-                TextField("Trip Destination", text: $tripDestination)
+            Button(action: {
+                createNewTrip()
+            }){
+                Text("Save")
+                    .bold()
+                    .frame(width: 340, height: 50)
+                    .background(Color("CustomColor"))
+                    .foregroundColor(.white)
+                    .cornerRadius(10.0)
             }
-
-            Section(header: Text("Date")){
-                DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
-                DatePicker("End Date", selection: $endDate, displayedComponents: .date)
-            }
-
-            Section(header: Text("Total Budget Estimation")){
-                TextField("Total Budget Estimation",text: $totalBudgetEstimation)
-            }
-
-//            Section {
-//                Button(action: {}){
-//                    Text("Create Budget Trip")
-//                        .bold()
-//                        .padding(.horizontal, 30.0)
-//                        .padding(.vertical, 20.0)
-//                        .background(Color("CustomColor"))
-//                        .foregroundColor(.white)
-//                        .cornerRadius(10.0)
-//                }
-//            }
+            .frame(minWidth:0,  maxWidth: .infinity)
         }
-        .background(.white)
+        .background(Color.gray.opacity(0.1))
+    }
+    
+    func createNewTrip(){
+        trips.append(
+            Trip(title: tripTitle, destination: tripDestination, startDate: startDate, endDate: endDate, totalBudgetEstimation: Int(totalBudgetEstimation) ?? 0 )
+        )
+        
+        isNoTrip = false
+        
+        mode.wrappedValue.dismiss()
     }
 }
 
 struct Newtrip_Previews: PreviewProvider {
+    
+    @State private static var dummyData: [Trip] = []
+    @State private static var isNoTrip: Bool = true
+    
     static var previews: some View {
-        Newtrip()
+        Newtrip(trips: $dummyData, isNoTrip: $isNoTrip)
     }
 }

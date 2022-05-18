@@ -9,10 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @State var isNoTrip: Bool = false
+    @State var isNoTrip: Bool = true
+    @State var trips: [Trip] = []
     
     var body: some View {
-        VStack (spacing: isNoTrip ? 0 : 200) {
+        VStack (spacing: isNoTrip ? 200 : 0) {
             ZStack (alignment: .top) {
                 Rectangle()
                     .frame(width: .infinity, height: 120)
@@ -35,22 +36,27 @@ struct HomeView: View {
             
             ScrollView {
                 
-                Text("No Budget Trip Plan")
-                    .frame(width: .infinity)
-                    .font(.system(size: 20,weight: .medium))
+                if(isNoTrip){
+                    Text("No Budget Trip Plan")
+                        .frame(width: .infinity)
+                        .font(.system(size: 20,weight: .medium))
+                    
+                    Spacer()
+                        .frame(height: 10)
+                    
+                    Text("You have not created any budget trip expenses yet")
+                        .multilineTextAlignment(.center)
+                        .frame(width: 280, height: 50)
+                        .font(.system(size: 16,weight: .thin))
+                    
+                    Spacer()
+                        .frame(height: 30)
+                } else {
+                    Text("Sudah ada data")
+                }
                 
-                Spacer()
-                    .frame(height: 10)
                 
-                Text("You have not created any budget trip expenses yet")
-                    .multilineTextAlignment(.center)
-                    .frame(width: 280, height: 50)
-                    .font(.system(size: 16,weight: .thin))
-                
-                Spacer()
-                    .frame(height: 30)
-                
-                NavigationLink(destination: Newtrip()){
+                NavigationLink(destination: Newtrip(trips: $trips, isNoTrip: $isNoTrip)){
                     Text("Create Budget Trip")
                         .bold()
                         .padding(.horizontal, 30.0)
