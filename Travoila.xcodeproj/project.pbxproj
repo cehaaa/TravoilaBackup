@@ -12,10 +12,11 @@
 		394887C0282B870A0008B340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 394887BF282B870A0008B340 /* Assets.xcassets */; };
 		394887C3282B870A0008B340 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 394887C2282B870A0008B340 /* Preview Assets.xcassets */; };
 		394887CB282B872E0008B340 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394887CA282B872E0008B340 /* OnBoardingView.swift */; };
-		CD3982932833BAA800E46A9D /* AddExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3982922833BAA800E46A9D /* AddExpenses.swift */; };
-		CD39829A283532F700E46A9D /* NewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD398299283532F700E46A9D /* NewTripView.swift */; };
+		39B6F6092834A14100F8B78C /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6F6082834A14100F8B78C /* Trip.swift */; };
+		39B6F60B2834BB8600F8B78C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B6F60A2834BB8600F8B78C /* Category.swift */; };
 		CD9EC2B8282FF20F00AFE302 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */; };
 		CD9EC2BA2830212C00AFE302 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2B92830212C00AFE302 /* HomeView.swift */; };
+		CD9EC2BC28311DAD00AFE302 /* NewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +26,11 @@
 		394887BF282B870A0008B340 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		394887C2282B870A0008B340 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		394887CA282B872E0008B340 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
-		CD3982922833BAA800E46A9D /* AddExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenses.swift; sourceTree = "<group>"; };
-		CD398299283532F700E46A9D /* NewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripView.swift; sourceTree = "<group>"; };
+		39B6F6082834A14100F8B78C /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		39B6F60A2834BB8600F8B78C /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		CD9EC2B92830212C00AFE302 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 		394887BA282B870A0008B340 /* Travoila */ = {
 			isa = PBXGroup;
 			children = (
+				39B6F6072834A12D00F8B78C /* Model */,
 				394887C9282B87130008B340 /* View */,
 				394887BB282B870A0008B340 /* TravoilaApp.swift */,
 				394887BD282B870A0008B340 /* ContentView.swift */,
@@ -84,10 +87,19 @@
 				CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */,
 				394887CA282B872E0008B340 /* OnBoardingView.swift */,
 				CD9EC2B92830212C00AFE302 /* HomeView.swift */,
-				CD398299283532F700E46A9D /* NewTripView.swift */,
-				CD3982922833BAA800E46A9D /* AddExpenses.swift */,
+				CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */,
+				CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		39B6F6072834A12D00F8B78C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39B6F6082834A14100F8B78C /* Trip.swift */,
+				39B6F60A2834BB8600F8B78C /* Category.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +179,9 @@
 				394887BE282B870A0008B340 /* ContentView.swift in Sources */,
 				394887BC282B870A0008B340 /* TravoilaApp.swift in Sources */,
 				CD9EC2BA2830212C00AFE302 /* HomeView.swift in Sources */,
+				39B6F6092834A14100F8B78C /* Trip.swift in Sources */,
+				CD9EC2BC28311DAD00AFE302 /* NewTripView.swift in Sources */,
+				39B6F60B2834BB8600F8B78C /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
