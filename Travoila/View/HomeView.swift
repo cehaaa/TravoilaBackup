@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Homescreen: View {
     
-//    var body: some View {
+    var body: some View {
 //        VStack {
 //            ZStack (alignment: .top) {
 //                Rectangle()
@@ -65,30 +65,51 @@ struct Homescreen: View {
 //        }
 //
 //    }
-    NavigationView {
-        ScrollView {
-            
-            NavigationLink("Hello, World!",
-                           destination: MyOtherSCreen())
-            
-            Text("Hello")
-            Text("Hello")
-            Text("Hello")
+        NavigationView {
+            ScrollView {
+                
+                NavigationLink("Hello, World!",
+                               destination: AddExpensesPage())
+                
+                Text("Hello")
+                Text("Hello")
+                Text("Hello")
+            }
+            .navigationTitle("Budget Trip")
+            .navigationBarItems(
+
+                trailing:
+                    NavigationLink(
+                        destination: AddExpensesPage(),
+                        label: {
+                            Image(systemName: "plus")
+                        })
+                    .accentColor(Color("CustomColor"))
+            )
         }
-        .navigationTitle("Budget Trip")
-        .navigationBarItems(
-            trailing:
-                NavigationLink(
-                    destination: <#T##() -> _#>,
-                    label: {
-                        Image(systemName: "plus")
-                    })
-                .accentColor(Color("CustomColor"))
-        )
     }
 }
 
-struct AddExpensesPage
+struct AddExpensesPage: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        ZStack {
+            Color.green.ignoresSafeArea()
+                .navigationTitle("New Trip")
+            
+            VStack {
+                Button("Back Button") {
+                    presentationMode.wrappedValue.dismiss()
+                }
+                
+            }
+        }
+        
+        
+    }
+}
 
 struct Homescreen_Previews: PreviewProvider {
     static var previews: some View {
