@@ -72,7 +72,7 @@ struct OnBoardingView: View {
                     Spacer()
                     
                     NavigationLink( destination:
-                                        HomeView()
+                                        TabContainerView()
                         .navigationBarBackButtonHidden(true)
 //                        .navigationTitle("Budget Trips")
 //                        .navigationBarTitleDisplayMode(.large)

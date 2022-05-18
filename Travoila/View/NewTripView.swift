@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Newtrip: View {
+struct NewTripView: View {
     
     @State var tripTitle: String = ""
     @State var tripDestination: String = ""
@@ -21,7 +21,6 @@ struct Newtrip: View {
     @Binding var isNoTrip: Bool
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-
     
     var body: some View {
         VStack {
@@ -61,7 +60,7 @@ struct Newtrip: View {
     
     func createNewTrip(){
         trips.append(
-            Trip(title: tripTitle, destination: tripDestination, startDate: startDate, endDate: endDate, totalBudgetEstimation: Int(totalBudgetEstimation) ?? 0 )
+            Trip(title: tripTitle, destination: tripDestination, startDate: startDate, endDate: endDate, totalBudgetEstimation: Int(totalBudgetEstimation) ?? 0, categories: [] )
         )
         
         isNoTrip = false
@@ -70,12 +69,12 @@ struct Newtrip: View {
     }
 }
 
-struct Newtrip_Previews: PreviewProvider {
+struct NewTripView_Previews: PreviewProvider {
     
     @State private static var dummyData: [Trip] = []
     @State private static var isNoTrip: Bool = true
     
     static var previews: some View {
-        Newtrip(trips: $dummyData, isNoTrip: $isNoTrip)
+        NewTripView(trips: $dummyData, isNoTrip: $isNoTrip)
     }
 }
