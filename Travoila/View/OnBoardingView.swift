@@ -11,7 +11,9 @@ struct OnBoardingView: View {
     @Environment (\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack(alignment: .center, spacing: 50) {
+        NavigationView {
+            ScrollView(.vertical) {
+        VStack(alignment: .center, spacing: 20) {
             VStack(alignment: .center) {
                 Text("Travoila!")
                     .font(.system(size: 48, weight: .semibold))
@@ -22,6 +24,7 @@ struct OnBoardingView: View {
                     .foregroundColor(Color.gray)
                 
             }
+            .padding()
             .frame(minWidth:0,  maxWidth: .infinity)
             
             VStack(alignment: .leading, spacing: 50) {
@@ -69,10 +72,13 @@ struct OnBoardingView: View {
             
             Spacer()
             
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-                UserDefaults.standard.set(false, forKey: "firstTimeOpenTheApp")
-            }) {
+            NavigationLink( destination: HomeView()
+                .navigationBarBackButtonHidden(true)
+            ) {
+//            Button(action: {
+//                self.presentationMode.wrappedValue.dismiss()
+//                UserDefaults.standard.set(false, forKey: "firstTimeOpenTheApp")
+//            }) {
                 Text("Get Started")
                     .foregroundColor(Color.white)
                     .padding(.horizontal)
@@ -88,7 +94,9 @@ struct OnBoardingView: View {
         }
         .padding(.horizontal, 45)
         .frame(minHeight: 0, maxHeight: .infinity)
-        .padding(.vertical, 50)
+//        .padding(.vertical, 50)
+    }
+}
     }
 }
 

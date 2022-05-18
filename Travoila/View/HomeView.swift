@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct Homescreen: View {
+struct HomeView: View {
+    
+    @State private var AddNewExpenses = 0
     
     var body: some View {
 //        VStack {
@@ -65,32 +67,41 @@ struct Homescreen: View {
 //        }
 //
 //    }
-        VStack {
         NavigationView {
-            ScrollView {
-                
-                
-            }
-            .navigationTitle("Budget Trip")
-            .navigationBarItems(
-                
-                trailing:
-                    NavigationLink(
-                        destination: AddExpensesPage(),
-                        label: {
-                            Image(systemName: "plus")
-                        })
-                    .accentColor(Color("CustomColor"))
-            )
             TabView(selection: .constant(1)) {
-                Text("Tab Content 1").tabItem { Text("Tab Label 1") }.tag(1)
-                Text("Tab Content 2").tabItem { Text("Tab Label 2") }.tag(2)
+                Text("INI SATU").tabItem {
+                    Image(systemName: "house")
+                    Text("Home") }.tag(1)
+                
+                Text("INI DUA").tabItem {
+                    Image(systemName: "airplane.circle")
+                    Text("My Trips") }.tag(2)
+            }
+            
+            .navigationTitle("Budget Trip")
+            
+            Button (action: {
+                
+            }, label: {
+                Image(systemName: "plus")
+                    .font(.system(size: 30))
+            }
+//           ) .navigationBarItems(
+//
+//                trailing:
+//                    NavigationLink(
+//                        destination: AddExpensesPage,
+//                        label: {
+//                            Image(systemName: "plus")
+//                        })
+                    
+            )
+            .accentColor(Color("CustomColor"))
                 }
+            
+
         }
-        
-        }
-    }
-}
+
 
 struct AddExpensesPage: View {
     
@@ -98,7 +109,7 @@ struct AddExpensesPage: View {
     
     var body: some View {
         ZStack {
-            Color.green.ignoresSafeArea()
+            Color.white.ignoresSafeArea()
                 .navigationTitle("New Trip")
             
             VStack {
@@ -112,9 +123,10 @@ struct AddExpensesPage: View {
         
     }
 }
-
-struct Homescreen_Previews: PreviewProvider {
+}
+    
+struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        Homescreen()
+        HomeView()
     }
 }
