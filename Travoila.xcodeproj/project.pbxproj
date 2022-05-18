@@ -13,6 +13,7 @@
 		394887C3282B870A0008B340 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 394887C2282B870A0008B340 /* Preview Assets.xcassets */; };
 		394887CB282B872E0008B340 /* OnBoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394887CA282B872E0008B340 /* OnBoardingView.swift */; };
 		CD3982932833BAA800E46A9D /* AddExpenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3982922833BAA800E46A9D /* AddExpenses.swift */; };
+		CD39829A283532F700E46A9D /* NewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD398299283532F700E46A9D /* NewTripView.swift */; };
 		CD9EC2B8282FF20F00AFE302 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */; };
 		CD9EC2BA2830212C00AFE302 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2B92830212C00AFE302 /* HomeView.swift */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,7 @@
 		394887C2282B870A0008B340 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		394887CA282B872E0008B340 /* OnBoardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingView.swift; sourceTree = "<group>"; };
 		CD3982922833BAA800E46A9D /* AddExpenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenses.swift; sourceTree = "<group>"; };
+		CD398299283532F700E46A9D /* NewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripView.swift; sourceTree = "<group>"; };
 		CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		CD9EC2B92830212C00AFE302 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 				394887CA282B872E0008B340 /* OnBoardingView.swift */,
 				CD9EC2B92830212C00AFE302 /* HomeView.swift */,
 				CD3982922833BAA800E46A9D /* AddExpenses.swift */,
+				CD398299283532F700E46A9D /* NewTripView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD3982932833BAA800E46A9D /* AddExpenses.swift in Sources */,
+				CD39829A283532F700E46A9D /* NewTripView.swift in Sources */,
 				CD9EC2B8282FF20F00AFE302 /* SplashScreen.swift in Sources */,
 				394887CB282B872E0008B340 /* OnBoardingView.swift in Sources */,
 				394887BE282B870A0008B340 /* ContentView.swift in Sources */,
