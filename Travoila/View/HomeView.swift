@@ -65,19 +65,15 @@ struct Homescreen: View {
 //        }
 //
 //    }
+        VStack {
         NavigationView {
             ScrollView {
                 
-                NavigationLink("Hello, World!",
-                               destination: AddExpensesPage())
                 
-                Text("Hello")
-                Text("Hello")
-                Text("Hello")
             }
             .navigationTitle("Budget Trip")
             .navigationBarItems(
-
+                
                 trailing:
                     NavigationLink(
                         destination: AddExpensesPage(),
@@ -86,6 +82,12 @@ struct Homescreen: View {
                         })
                     .accentColor(Color("CustomColor"))
             )
+            TabView(selection: .constant(1)) {
+                Text("Tab Content 1").tabItem { Text("Tab Label 1") }.tag(1)
+                Text("Tab Content 2").tabItem { Text("Tab Label 2") }.tag(2)
+                }
+        }
+        
         }
     }
 }
