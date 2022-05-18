@@ -57,7 +57,7 @@ struct HomeView: View {
             ScrollView {
                 if(isNoTrip){
                     Text("No Budget Trip Plan")
-                        .frame(width: .infinity)
+                    
                         .font(.system(size: 20,weight: .medium))
 
                     Spacer()
@@ -74,11 +74,11 @@ struct HomeView: View {
                     NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)){
                         Text("Create Budget Trip")
                             .bold()
-                            .padding(.horizontal, 30.0)
-                            .padding(.vertical, 20.0)
+                            .frame(width: 200, height: 50)
                             .background(Color("CustomColor"))
                             .foregroundColor(.white)
                             .cornerRadius(10.0)
+
                     }
                 } else {
                     VStack {
@@ -141,7 +141,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     
     @State private static var dummyData: [Trip] = []
-    @State private static var isNoTrip: Bool = false
+    @State private static var isNoTrip: Bool = true
     
     static var previews: some View {
         HomeView(isNoTrip: $isNoTrip, trips: $dummyData)
