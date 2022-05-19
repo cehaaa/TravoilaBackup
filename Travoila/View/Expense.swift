@@ -72,6 +72,7 @@ struct SecondScreen: View {
                                     self.selectCategory = true
                                 }
                         }
+                        .listRowBackground(listRowColor)
                     }
                     
                     Section(header: Text("Date")){
@@ -187,7 +188,7 @@ struct SecondScreen: View {
                 }
                 .frame(minWidth:0,  maxWidth: .infinity)
             }
-            .navigationTitle("New Trip")
+            .navigationTitle("Add Expense")
         }
         //        ZStack (alignment: .topLeading) {
         //            Color.white

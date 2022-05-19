@@ -117,7 +117,7 @@ struct DefaultView: View {
                         }
                         
                         
-                        NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)){
+                        NavigationLink(destination: SecondScreen()){
                             Text("Add Expense")
                                 .bold()
                                 .frame(width: 300, height: 50)
