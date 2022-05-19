@@ -18,7 +18,6 @@
 		CD39829E2835E45900E46A9D /* TEST.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39829D2835E45900E46A9D /* TEST.swift */; };
 		CD3982A02836443200E46A9D /* DefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39829F2836443200E46A9D /* DefaultView.swift */; };
 		CD9EC2B8282FF20F00AFE302 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */; };
-		CD9EC2BA2830212C00AFE302 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2B92830212C00AFE302 /* HomeView.swift */; };
 		CD9EC2BC28311DAD00AFE302 /* NewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,7 +34,6 @@
 		CD39829D2835E45900E46A9D /* TEST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TEST.swift; sourceTree = "<group>"; };
 		CD39829F2836443200E46A9D /* DefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultView.swift; sourceTree = "<group>"; };
 		CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
-		CD9EC2B92830212C00AFE302 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,11 +90,10 @@
 			children = (
 				CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */,
 				394887CA282B872E0008B340 /* OnBoardingView.swift */,
-				CD9EC2B92830212C00AFE302 /* HomeView.swift */,
+				CD39829F2836443200E46A9D /* DefaultView.swift */,
 				CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */,
 				CD39829B28355AE500E46A9D /* SummaryView.swift */,
 				CD39829D2835E45900E46A9D /* TEST.swift */,
-				CD39829F2836443200E46A9D /* DefaultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,7 +181,6 @@
 				394887CB282B872E0008B340 /* OnBoardingView.swift in Sources */,
 				394887BE282B870A0008B340 /* ContentView.swift in Sources */,
 				394887BC282B870A0008B340 /* TravoilaApp.swift in Sources */,
-				CD9EC2BA2830212C00AFE302 /* HomeView.swift in Sources */,
 				39B6F6092834A14100F8B78C /* Trip.swift in Sources */,
 				CD9EC2BC28311DAD00AFE302 /* NewTripView.swift in Sources */,
 				CD39829E2835E45900E46A9D /* TEST.swift in Sources */,
