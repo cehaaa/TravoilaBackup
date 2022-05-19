@@ -43,8 +43,6 @@ struct NewTripView: View {
     var body: some View {
         VStack {
             VStack {
-                
-                
                 Form {
                     Section ( header: Text("Trip Title")) {
                         TextField("Trip Title", text: $tripTitle)
