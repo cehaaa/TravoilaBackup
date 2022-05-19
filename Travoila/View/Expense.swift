@@ -67,7 +67,7 @@ struct SecondScreen: View {
                             Text("Category")
                             Spacer()
                             Text("Select")
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color("CustomColor"))
                                 .onTapGesture {
                                     self.selectCategory = true
                                 }
