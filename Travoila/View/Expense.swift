@@ -25,9 +25,9 @@ struct Expense: View {
                     .padding(20)
                     .background(Color.white.cornerRadius(10))
             })
-//            .fullScreenCover(isPresented: $showSheet, content: {
-//                SecondScreen()
-//            })
+            //            .fullScreenCover(isPresented: $showSheet, content: {
+            //                SecondScreen()
+            //            })
             .sheet(isPresented: $showSheet, content: {
                 // DO NOT ADD CONDITIONAL LOGIC
                 SecondScreen()
@@ -42,10 +42,9 @@ struct SecondScreen: View {
     
     @State var expenseTitle: String = ""
     @State var expenseAmount: String = ""
-    @State var expenseCategory: Bool = false
+    @State var selectCategory: Bool = false
     @State var expenseDate: Date = Date()
-    
-    @State var totalBudgetEstimation: String = ""
+    @State var expenseNote: String = ""
     //    @ObservedObject var input = NumbersOnly()
     @State var listRowColor: Color = Color.gray.opacity(0.08)
     
@@ -53,29 +52,120 @@ struct SecondScreen: View {
         VStack {
             VStack {
                 Form {
-                    Section ( header: Text("Trip Title")) {
-                        TextField("Trip Title", text: $tripTitle)
+                    Section ( header: Text("Title")) {
+                        TextField("Input Title", text: $expenseTitle)
                             .listRowBackground(listRowColor)
                     }
                     
-                    Section ( header: Text("Trip Destination")) {
-                        TextField("Trip Destination", text: $tripDestination)
+                    Section ( header: Text("Amount")) {
+                        TextField("IDR", text: $expenseAmount)
                             .listRowBackground(listRowColor)
+                    }
+                    
+                    Section(header: Text("Category")){
+                        HStack {
+                            Text("Category")
+                            Spacer()
+                            Text("Select")
+                                .foregroundColor(.blue)
+                                .onTapGesture {
+                                    self.selectCategory = true
+                                }
+                        }
                     }
                     
                     Section(header: Text("Date")){
-                        DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
-                            .listRowBackground(listRowColor)
-                        DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+                        DatePicker("Expense Date", selection: $expenseDate, displayedComponents: .date)
                             .listRowBackground(listRowColor)
                     }
                     
-                    Section(header: Text("Total Budget Estimation")){
-                        TextField("IDR 0",text: $totalBudgetEstimation)
+                    Section(header: Text("Note")){
+                        TextField("Optional",text: $expenseNote)
                             .listRowBackground(listRowColor)
                             .keyboardType(.default)
                     }
                 }
+                
+                .sheet(isPresented: $selectCategory){
+                    NavigationView {
+                        ScrollView {
+                            VStack(alignment: .leading, spacing: 30.0) {
+                                HStack(alignment: .center) {
+                                    VStack(spacing: 12.0) {
+                                        Image("Transportation")
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(spacing: 12.0) {
+                                        Image("Food & Beverage")
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(spacing: 12.0) {
+                                        Image("Activity")
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                    }
+                                }
+                                
+                                HStack(alignment: .center) {
+                                    VStack(spacing: 12.0) {
+                                        Image("Accomodation")
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(spacing: 12.0) {
+                                        Image("Shopping")
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    VStack(spacing: 12.0) {
+                                        Image("Emergency Fund")
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                    }
+                                }
+                                
+                                HStack {
+                                    VStack(spacing: 12.0) {
+                                        Image("Others")
+                                            .resizable()
+                                            .frame(width: 80, height: 80)
+                                    }
+                                    
+                                }
+                                
+                            }
+                            .padding(.horizontal, 20.0)
+                        }
+                        .frame(alignment: .topLeading)
+                        .padding(.top, 20.0)
+                        .navigationTitle("Choose Category")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .navigationBarItems(
+                            leading:
+                                Button(action: {
+                                    self.selectCategory = false
+                                }){
+                                    Text("Back")
+                                        .foregroundColor(Color("CustomColor"))
+                                }
+                        )
+                    }
+                }
+                
                 .onAppear {
                     UITableView.appearance().backgroundColor = .clear
                 }
@@ -93,25 +183,26 @@ struct SecondScreen: View {
                         .background(Color("CustomColor"))
                         .foregroundColor(.white)
                         .cornerRadius(10.0)
+                        .padding(.bottom, 20)
                 }
                 .frame(minWidth:0,  maxWidth: .infinity)
             }
             .navigationTitle("New Trip")
         }
-//        ZStack (alignment: .topLeading) {
-//            Color.white
-//                .ignoresSafeArea()
-//
-//
-//            Button (action: {
-//                presentationMode.wrappedValue.dismiss()
-//            }, label: {
-//                Image(systemName: "xmark")
-//                    .foregroundColor(.gray)
-//                    .font(.largeTitle)
-//                    .padding(20)
-//            })
-//        }
+        //        ZStack (alignment: .topLeading) {
+        //            Color.white
+        //                .ignoresSafeArea()
+        //
+        //
+        //            Button (action: {
+        //                presentationMode.wrappedValue.dismiss()
+        //            }, label: {
+        //                Image(systemName: "xmark")
+        //                    .foregroundColor(.gray)
+        //                    .font(.largeTitle)
+        //                    .padding(20)
+        //            })
+        //        }
     }
 }
 
