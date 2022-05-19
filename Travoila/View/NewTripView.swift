@@ -4,7 +4,6 @@
 //
 //  Created by Patrick Louis on 15/05/22.
 //
-
 import SwiftUI
 
 //class NumbersOnly: ObservableObject {
@@ -18,7 +17,6 @@ import SwiftUI
 //        }
 //    }
 //}
-
 struct NewTripView: View {
     
     

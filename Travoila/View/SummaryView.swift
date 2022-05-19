@@ -15,6 +15,8 @@ struct SummaryView: View {
     @State var selectCategory: Bool = false
     @State var budgetAllocation: String = ""
     
+//    @Binding var trips: [Trip]
+//    @Binding var isNoTrip: Bool
     
     var body: some View {
         NavigationView {
@@ -86,7 +88,7 @@ struct SummaryView: View {
             .toolbar(content: {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        
+//                        NewTripView(trips: $dummyData, isNoTrip: $isNoTrip)
                     }) {
                         Text("Edit")
                             .foregroundColor(Color("CustomColor"))
