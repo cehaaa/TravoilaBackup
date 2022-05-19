@@ -29,7 +29,8 @@ struct NewTripView: View {
     
     @State var totalBudgetEstimation: String = ""
 //    @ObservedObject var input = NumbersOnly()
-    @State var listRowColor: Color = Color.gray.opacity(0.1)
+    @State var listRowColor: Color = Color.gray.opacity(0.08)
+//    @State private var isPerformingTask = false
     
     @Binding var trips: [Trip]
     @Binding var isNoTrip: Bool
@@ -59,7 +60,7 @@ struct NewTripView: View {
                 Section(header: Text("Total Budget Estimation")){
                     TextField("IDR 0",text: /*$input.value*/$totalBudgetEstimation)
                         .listRowBackground(listRowColor)
-                        .keyboardType(.decimalPad)
+                        .keyboardType(.default)
                 }
             }
             .navigationBarTitle("New Trip", displayMode: .inline)
@@ -73,6 +74,7 @@ struct NewTripView: View {
 
             Button(action: {
                 createNewTrip()
+                SummaryView()
             }){
                 Text("Save")
                     .bold()

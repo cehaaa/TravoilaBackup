@@ -114,7 +114,7 @@ struct HomeView: View {
                                     .background(Color("CustomColor"))
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                .background(.gray.opacity(0.1))
+                                .background(.red.opacity(0.1))
                                 .frame(height: 20)
                                 .cornerRadius(10.0)
                                 
@@ -132,7 +132,10 @@ struct HomeView: View {
                         }
                         .padding()
 //                        .background(Color.blue)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+//                        .frame(minWidth: 0, maxWidth: 340, alignment: .leading)
+                        .frame(width: 340, height: 180, alignment: .leading)
+//                        background(Color.red)
+//                        .shadow(color: Color.black, radius: 10, x: 0, y: 10)
                         
                         NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)){
                             Text("Add Expense")
