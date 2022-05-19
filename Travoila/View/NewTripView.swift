@@ -21,6 +21,7 @@ import SwiftUI
 
 struct NewTripView: View {
     
+    
     @State var tripTitle: String = ""
     @State var tripDestination: String = ""
     
@@ -36,56 +37,71 @@ struct NewTripView: View {
     @Binding var isNoTrip: Bool
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+//
+//    init(){
+//        UINavigationBar.appearance().backgroundColor = .red
+//    }
     
     var body: some View {
-        VStack {
-            Form {
-                Section ( header: Text("Trip Title")) {
-                    TextField("Trip Title", text: $tripTitle)
-                        .listRowBackground(listRowColor)
+        NavigationView {
+            VStack {
+                Form {
+                    Section ( header: Text("Trip Title")) {
+                        TextField("Trip Title", text: $tripTitle)
+                            .listRowBackground(listRowColor)
+                    }
+
+                    Section ( header: Text("Trip Destination")) {
+                        TextField("Trip Destination", text: $tripDestination)
+                            .listRowBackground(listRowColor)
+                    }
+
+                    Section(header: Text("Date")){
+                        DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
+                            .listRowBackground(listRowColor)
+                        DatePicker("End Date", selection: $endDate, displayedComponents: .date)
+                            .listRowBackground(listRowColor)
+                    }
+
+                    Section(header: Text("Total Budget Estimation")){
+                        TextField("IDR 0",text: /*$input.value*/$totalBudgetEstimation)
+                            .listRowBackground(listRowColor)
+                            .keyboardType(.default)
+                    }
+                }
+                .navigationBarTitle("New Trip")
+                
+                
+//                .offset(y: -20)
+    //            .background(Color.red)
+                .onAppear {
+                    UITableView.appearance().backgroundColor = .clear
+                }
+                .onDisappear {
+                    UITableView.appearance().backgroundColor = .systemGroupedBackground
                 }
 
-                Section ( header: Text("Trip Destination")) {
-                    TextField("Trip Destination", text: $tripDestination)
-                        .listRowBackground(listRowColor)
+                Button(action: {
+                    createNewTrip()
+    //                SummaryView() > ini nanti alternatif 2 button aja
+                }){
+                    Text("Save")
+                        .bold()
+                        .frame(width: 340, height: 50)
+                        .background(Color("CustomColor"))
+                        .foregroundColor(.white)
+                        .cornerRadius(10.0)
                 }
-
-                Section(header: Text("Date")){
-                    DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
-                        .listRowBackground(listRowColor)
-                    DatePicker("End Date", selection: $endDate, displayedComponents: .date)
-                        .listRowBackground(listRowColor)
-                }
-
-                Section(header: Text("Total Budget Estimation")){
-                    TextField("IDR 0",text: /*$input.value*/$totalBudgetEstimation)
-                        .listRowBackground(listRowColor)
-                        .keyboardType(.default)
-                }
+                .frame(minWidth:0,  maxWidth: .infinity)
+                
+                //.background(Color.white)
             }
-            .navigationBarTitle("New Trip", displayMode: .inline)
+//            .navigationBarTitle("New Trip")/*.overlay(RoundedRectangle(cornerRadius: 1).foregroundColor(.red))*/
+            //.navigation
             .background(Color.white)
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
-            }
-            .onDisappear {
-                UITableView.appearance().backgroundColor = .systemGroupedBackground
-            }
-
-            Button(action: {
-                createNewTrip()
-                SummaryView()
-            }){
-                Text("Save")
-                    .bold()
-                    .frame(width: 340, height: 50)
-                    .background(Color("CustomColor"))
-                    .foregroundColor(.white)
-                    .cornerRadius(10.0)
-            }
-            .frame(minWidth:0,  maxWidth: .infinity)
+       
         }
-        .background(Color.white)
+        .navigationViewStyle(.stack)
     }
     
     func createNewTrip(){

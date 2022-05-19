@@ -27,7 +27,7 @@ struct SummaryView: View {
                     }
                     HStack() {
                         VStack(alignment: .leading, spacing: 12) {
-                            Text("Total Expanses")
+                            Text("Total Expenses")
                                 .font(.callout)
                             Text("IDR. 5,170,000")
                                 .font(.title3)
@@ -67,7 +67,10 @@ struct SummaryView: View {
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
                 VStack(spacing: 100.0) {
-                    Text("Image")
+                    Image("SummaryEmpty")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 200, alignment: .center)
                         .padding(.top, 100.0)
                     
                     Text("You have not set any budget category allocation")
