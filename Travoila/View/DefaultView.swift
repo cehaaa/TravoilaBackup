@@ -125,6 +125,7 @@ struct DefaultView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(10.0)
                         }
+                        .padding(.top, 30)
                     }
                 }
             }
