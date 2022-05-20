@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Category: Hashable {
-    var title: String
+struct Allocation {
+    var categrory: String
     var amount: Int
+    var expanses: [Expense]
 }

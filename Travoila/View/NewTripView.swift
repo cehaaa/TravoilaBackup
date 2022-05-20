@@ -19,6 +19,8 @@ struct NewTripView: View {
     
     @Binding var trips: [Trip]
     @Binding var isNoTrip: Bool
+    @Binding var currentTrip: Trip
+
     
     @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
@@ -72,8 +74,10 @@ struct NewTripView: View {
     
     func createNewTrip(){
         trips.append(
-            Trip(title: tripTitle, destination: tripDestination, startDate: startDate, endDate: endDate, totalBudgetEstimation: Int(totalBudgetEstimation) ?? 0, categories: [] )
+            Trip(title: tripTitle, destination: tripDestination, startDate: startDate, endDate: endDate, totalBudgetEstimation: Int(totalBudgetEstimation) ?? 0, allocations: [] )
         )
+        
+        currentTrip = trips.last ?? Trip(title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
         
         isNoTrip = false
         
@@ -85,8 +89,9 @@ struct NewTripView_Previews: PreviewProvider {
     
     @State private static var dummyData: [Trip] = []
     @State private static var isNoTrip: Bool = true
+    @State private static var currentTrip = Trip(title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
     
     static var previews: some View {
-        NewTripView(trips: $dummyData, isNoTrip: $isNoTrip)
+        NewTripView(trips: $dummyData, isNoTrip: $isNoTrip, currentTrip: $currentTrip)
     }
 }

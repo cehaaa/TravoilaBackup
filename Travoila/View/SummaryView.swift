@@ -13,7 +13,14 @@ struct SummaryView: View {
     @State var chooseCategory: Bool = false
     
     @State var selectCategory: Bool = false
+    @State var selectedCategory: String = "Category"
     @State var budgetAllocation: String = ""
+    
+    @Binding var trips: [Trip]
+    @Binding var currentTrip: Trip
+    
+    @State var currentAllocation = []
+    
     
     var body: some View {
         VStack {
@@ -22,7 +29,7 @@ struct SummaryView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Total Expenses")
                             .font(.callout)
-                        Text("IDR. 5,170,000")
+                        Text("IDR. 5,170")
                             .font(.title3)
                             .fontWeight(.bold)
                     }
@@ -32,7 +39,7 @@ struct SummaryView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Total Budget")
                             .font(.callout)
-                        Text("IDR. 15,000,000")
+                        Text("IDR. \(currentTrip.totalBudgetEstimation)")
                             .font(.title3)
                             .fontWeight(.bold)
                     }
@@ -59,31 +66,43 @@ struct SummaryView: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             
-            VStack(spacing: 100.0) {
-                Image("SummaryEmpty")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 250, height: 200, alignment: .center)
-                    .padding(.top, 100.0)
-                
-                Text("You have not set any budget category allocation")
-                    .multilineTextAlignment(.center)
-                    .frame(width: 280, height: 50)
-                    .font(.system(size: 16,weight: .thin))
+            
+            
+            if(currentTrip.allocations?.count ?? 0 <= 0){
+                VStack(spacing: 100.0) {
+                    Image("SummaryEmpty")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 200, alignment: .center)
+                        .padding(.top, 100.0)
+                    
+                    Text("You have not set any budget category allocation")
+                        .multilineTextAlignment(.center)
+                        .frame(width: 280, height: 50)
+                        .font(.system(size: 16,weight: .thin))
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
+            } else {
+                //                ScrollView(.vertical, showsIndicators: false){
+                //                    VStack(spacing: 20.0){
+                //                        ForEach($currentAllocation, id: \.self ){ allocation in
+                //                            Text("Halo")
+                //                        }
+                //                    }
+                //                }
             }
-            .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .padding(.horizontal, 20)
-        .navigationTitle("Batam Trip")
+        .navigationTitle(currentTrip.title)
         .sheet(isPresented: $newAllocation){
             NavigationView {
                 VStack {
                     Form {
                         Section(header: Text("Category")){
                             HStack {
-                                Text("Category")
+                                Text(selectedCategory)
                                 Spacer()
                                 Text("Select")
                                     .foregroundColor(.blue)
@@ -118,6 +137,10 @@ struct SummaryView: View {
                                         Image("Transportation")
                                             .resizable()
                                             .frame(width: 80, height: 80)
+                                            .onTapGesture {
+                                                selectedCategory = "Transportation"
+                                                selectCategory = false
+                                            }
                                     }
                                     
                                     Spacer()
@@ -126,6 +149,10 @@ struct SummaryView: View {
                                         Image("Food & Beverage")
                                             .resizable()
                                             .frame(width: 80, height: 80)
+                                            .onTapGesture {
+                                                selectedCategory = "Food & Beverage"
+                                                selectCategory = false
+                                            }
                                     }
                                     
                                     Spacer()
@@ -134,6 +161,10 @@ struct SummaryView: View {
                                         Image("Activity")
                                             .resizable()
                                             .frame(width: 80, height: 80)
+                                            .onTapGesture {
+                                                selectedCategory = "Activity"
+                                                selectCategory = false
+                                            }
                                     }
                                 }
                                 
@@ -142,6 +173,10 @@ struct SummaryView: View {
                                         Image("Accomodation")
                                             .resizable()
                                             .frame(width: 80, height: 80)
+                                            .onTapGesture {
+                                                selectedCategory = "Accomodation"
+                                                selectCategory = false
+                                            }
                                     }
                                     
                                     Spacer()
@@ -150,6 +185,10 @@ struct SummaryView: View {
                                         Image("Shopping")
                                             .resizable()
                                             .frame(width: 80, height: 80)
+                                            .onTapGesture {
+                                                selectedCategory = "Shopping"
+                                                selectCategory = false
+                                            }
                                     }
                                     
                                     Spacer()
@@ -158,6 +197,10 @@ struct SummaryView: View {
                                         Image("Emergency Fund")
                                             .resizable()
                                             .frame(width: 80, height: 80)
+                                            .onTapGesture {
+                                                selectedCategory = "Emergency Fund"
+                                                selectCategory = false
+                                            }
                                     }
                                 }
                                 
@@ -166,6 +209,10 @@ struct SummaryView: View {
                                         Image("Others")
                                             .resizable()
                                             .frame(width: 80, height: 80)
+                                            .onTapGesture {
+                                                selectedCategory = "Others"
+                                                selectCategory = false
+                                            }
                                     }
                                     
                                 }
@@ -201,7 +248,7 @@ struct SummaryView: View {
                     
                     trailing:
                         Button(action: {
-                            
+                            createNewAllocation()
                         }){
                             Text("Save")
                                 .foregroundColor(Color("CustomColor"))
@@ -211,10 +258,24 @@ struct SummaryView: View {
             }
         }
     }
+    
+    
+    func createNewAllocation(){
+        currentTrip.allocations?.append(
+            Allocation(categrory: selectedCategory, amount: Int(budgetAllocation) ?? 0, expanses: [])
+        )
+        
+        newAllocation = false
+    }
+    
 }
 
 struct SummaryView_Previews: PreviewProvider {
+    
+    @State private static var dummyData: [Trip] = []
+    @State private static var currentTrip = Trip(title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
+    
     static var previews: some View {
-        SummaryView()
+        SummaryView(trips: $dummyData, currentTrip: $currentTrip)
     }
 }

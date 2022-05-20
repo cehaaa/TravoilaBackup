@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Trip: Hashable {
+struct Trip {
     var title: String;
     var destination: String;
     var startDate: Date;
     var endDate: Date;
     var totalBudgetEstimation: Int;
-    var categories: [Category]?
+    var allocations: [Allocation]?
 }
