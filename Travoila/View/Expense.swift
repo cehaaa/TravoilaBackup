@@ -45,6 +45,7 @@ struct SecondScreen: View {
     @State var selectCategory: Bool = false
     @State var expenseDate: Date = Date()
     @State var expenseNote: String = ""
+   
     //    @ObservedObject var input = NumbersOnly()
     @State var listRowColor: Color = Color.gray.opacity(0.08)
     
