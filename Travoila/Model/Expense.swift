@@ -8,6 +8,7 @@
 import Foundation
 
 struct Expense {
+    var id: Int
     var title: String
     var amount: Int
     var category: Category

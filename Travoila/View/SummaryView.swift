@@ -19,8 +19,6 @@ struct SummaryView: View {
     @Binding var trips: [Trip]
     @Binding var currentTrip: Trip
     
-    @State var currentAllocation = []
-    
     
     var body: some View {
         VStack {
@@ -44,6 +42,7 @@ struct SummaryView: View {
                             .fontWeight(.bold)
                     }
                 }
+                .padding(.top, 20.0)
             }
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             
@@ -66,9 +65,7 @@ struct SummaryView: View {
             }
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             
-            
-            
-            if(currentTrip.allocations?.count ?? 0 <= 0){
+            if(currentTrip.allocations?.count  ?? 0 <= 0){
                 VStack(spacing: 100.0) {
                     Image("SummaryEmpty")
                         .resizable()
@@ -83,13 +80,46 @@ struct SummaryView: View {
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             } else {
-                //                ScrollView(.vertical, showsIndicators: false){
-                //                    VStack(spacing: 20.0){
-                //                        ForEach($currentAllocation, id: \.self ){ allocation in
-                //                            Text("Halo")
-                //                        }
-                //                    }
-                //                }
+                
+                VStack {
+                    ScrollView {
+                        
+                        ForEach(currentTrip.allocations!, id: \.id) { allocation in
+                            VStack(spacing: 10) {
+                                VStack {
+                                    HStack(alignment: .center) {
+                                        HStack (spacing: 10){
+                                            Image(allocation.category)
+                                                .resizable()
+                                                .frame(width: 50, height: 50)
+                                            
+                                            
+                                            Text(allocation.category)
+                                                .fontWeight(.bold)
+                                        }
+                                        
+                                        Spacer()
+                                        
+                                        VStack(alignment: .trailing, spacing: 5) {
+                                            Text("IDR \(allocation.amount) left")
+                                                .font(.system(size: 14))
+                                            
+                                            Text("of IDR \(allocation.amount)")
+                                                .foregroundColor(.gray)
+                                                .font(.system(size: 12))
+                                        }
+                                    }
+                                    .foregroundColor(.black)
+                                    .padding()
+                                    .background(Color.white)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 2)
+                                }
+                            }
+                        }
+                    }
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
             }
             
         }
@@ -262,10 +292,13 @@ struct SummaryView: View {
     
     func createNewAllocation(){
         currentTrip.allocations?.append(
-            Allocation(categrory: selectedCategory, amount: Int(budgetAllocation) ?? 0, expanses: [])
+            Allocation(id: currentTrip.allocations!.count + 1, category: selectedCategory, amount: Int(budgetAllocation) ?? 0, expanses: [])
         )
         
         newAllocation = false
+        
+        selectedCategory = "Category"
+        budgetAllocation = ""
     }
     
 }
@@ -273,7 +306,7 @@ struct SummaryView: View {
 struct SummaryView_Previews: PreviewProvider {
     
     @State private static var dummyData: [Trip] = []
-    @State private static var currentTrip = Trip(title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
+    @State private static var currentTrip = Trip(id: 0, title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
     
     static var previews: some View {
         SummaryView(trips: $dummyData, currentTrip: $currentTrip)

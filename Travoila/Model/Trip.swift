@@ -8,6 +8,7 @@
 import Foundation
 
 struct Trip {
+    var id: Int
     var title: String;
     var destination: String;
     var startDate: Date;

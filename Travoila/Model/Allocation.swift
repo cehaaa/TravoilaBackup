@@ -8,7 +8,8 @@
 import Foundation
 
 struct Allocation {
-    var categrory: String
+    var id: Int
+    var category: String
     var amount: Int
     var expanses: [Expense]
 }

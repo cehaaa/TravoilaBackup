@@ -33,7 +33,7 @@ struct DefaultView: View {
     @State var isNoTrip: Bool = true
     @State var trips: [Trip] = []
     
-    @State var currentTrip: Trip = Trip(title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
+    @State var currentTrip: Trip = Trip(id: 0, title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
     
     var body: some View {
         NavigationView {
@@ -143,7 +143,7 @@ struct DefaultView_Previews: PreviewProvider {
     
     @State private static var dummyData: [Trip] = []
     @State private static var isNoTrip: Bool = false
-    @State private static var currentTrip: Trip = Trip(title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
+    @State private static var currentTrip: Trip = Trip(id: 0, title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
     
     static var previews: some View {
         DefaultView()
