@@ -22,7 +22,44 @@ class NotificationManager {
             }
         }
     }
+    
+    func scheduleNotification() {
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Keep On Track!"
+        content.subtitle = "Have you recorded today's expenses?"
+        content.sound = .default
+        content.badge = 1
+        
+        // Time
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
+        
+        // Calender
+        var dateComponents = DateComponents ()
+        dateComponents.hour = 10
+        dateComponents.minute = 07
+        dateComponents.hour = 10
+        dateComponents.minute = 08
+//        dateComponents.day = 1
+        
+
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        let request = UNNotificationRequest(
+            identifier: UUID().uuidString,
+            content: content,
+            trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+        
+    }
+    func cancelNotification() {
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+    }
 }
+
+
 
 struct LocalNotification: View {
     var body: some View {
@@ -30,6 +67,15 @@ struct LocalNotification: View {
             Button("Request permission") {
                 NotificationManager.instance.requestAuthorization()
             }
+            Button("Schedule Notification") {
+                NotificationManager.instance.scheduleNotification()
+            }
+            Button("Cancel Notification") {
+                NotificationManager.instance.cancelNotification()
+            }
+        }
+        .onAppear {
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
 }
