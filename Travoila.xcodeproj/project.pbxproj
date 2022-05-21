@@ -18,6 +18,7 @@
 		CD3982A02836443200E46A9D /* DefaultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD39829F2836443200E46A9D /* DefaultView.swift */; };
 		CD3982A22836A37B00E46A9D /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3982A12836A37B00E46A9D /* Expense.swift */; };
 		CD3982A428372A3C00E46A9D /* LocalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3982A328372A3B00E46A9D /* LocalNotification.swift */; };
+		CD434E77283933AE0099B565 /* MyTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD434E76283933AE0099B565 /* MyTrip.swift */; };
 		CD9EC2B8282FF20F00AFE302 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */; };
 		CD9EC2BC28311DAD00AFE302 /* NewTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		CD39829F2836443200E46A9D /* DefaultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultView.swift; sourceTree = "<group>"; };
 		CD3982A12836A37B00E46A9D /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		CD3982A328372A3B00E46A9D /* LocalNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotification.swift; sourceTree = "<group>"; };
+		CD434E76283933AE0099B565 /* MyTrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTrip.swift; sourceTree = "<group>"; };
 		CD9EC2B7282FF20F00AFE302 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		CD9EC2BB28311DAD00AFE302 /* NewTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 				CD39829B28355AE500E46A9D /* SummaryView.swift */,
 				CD3982A12836A37B00E46A9D /* Expense.swift */,
 				CD3982A328372A3B00E46A9D /* LocalNotification.swift */,
+				CD434E76283933AE0099B565 /* MyTrip.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD434E77283933AE0099B565 /* MyTrip.swift in Sources */,
 				CD9EC2B8282FF20F00AFE302 /* SplashScreen.swift in Sources */,
 				394887CB282B872E0008B340 /* OnBoardingView.swift in Sources */,
 				394887BE282B870A0008B340 /* ContentView.swift in Sources */,

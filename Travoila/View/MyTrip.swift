@@ -1,47 +1,52 @@
 //
-//  TESTING.swift
+//  MyTrip.swift
 //  Travoila
 //
-//  Created by Patrick Louis on 19/05/22.
+//  Created by Patrick Louis on 20/05/22.
 //
-
 import SwiftUI
 
-struct TabContainerView: View {
+struct MyTrip: View {
     
     @State var isNoTrip: Bool = true
     @State var trips: [Trip] = []
     
-    var body: some View {
-        TabView {
-            DefaultView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-            
-            MyTrip()
-                .tabItem {
-                    Label("My Trips", systemImage: "airplane.circle")
-                }
-        }
-        .accentColor(Color("CustomColor"))
+    @State var selection: String = "Upcoming"
+    let filterOptions: [String] = [
+    "Upcoming", "Next"
+    ]
+    
+    init() {
+        UISegmentedControl.appearance().selectedSegmentTintColor = UIColor.init(red: 1.00, green: 0.35, blue: 0.37, alpha: 1)
+        
+        let attributes: [NSAttributedString.Key:Any] = [
+            .foregroundColor : UIColor.white
+        ]
+        UISegmentedControl.appearance().setTitleTextAttributes(attributes, for: .selected)
     }
-}
-
-struct DefaultView: View {
-    
-    @State var isNoTrip: Bool = true
-    @State var trips: [Trip] = []
     
     var body: some View {
         NavigationView {
             ScrollView {
+                Picker(
+                    selection: $selection,
+                    label: Text("Picker"),
+                    content: {
+                        ForEach(filterOptions.indices) { index in
+                            Text(filterOptions[index])
+                                .tag(filterOptions[index])
+                        }
+                    })
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+    //            .background(Color("CustomColor"))
+                
                 if(isNoTrip){
                     //                    VStack {
                     Text("No Budget Trip Plan")
                         .frame(width: .infinity)
                         .font(.system(size: 20,weight: .medium))
-                        .padding(.top, 200)
+                        .padding(.top, 100)
                     
                     Spacer()
                         .frame(height: 10)
@@ -56,18 +61,20 @@ struct DefaultView: View {
                         .frame(height: 10)
                         .background(Color.orange)
                     
-                    NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)){
-                        Text("Create Budget Trip")
-                            .bold()
-                            .padding(.horizontal, 30.0)
-                            .padding(.vertical, 20.0)
-                            .background(Color("CustomColor"))
-                            .foregroundColor(.white)
-                            .cornerRadius(10.0)
-                    }
+//                    NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)){
+//                        Text("Create Budget Trip")
+//                            .bold()
+//                            .padding(.horizontal, 30.0)
+//                            .padding(.vertical, 20.0)
+//                            .background(Color("CustomColor"))
+//                            .foregroundColor(.white)
+//                            .cornerRadius(10.0)
+//                    }
+                    //                    }
+//                    .padding(.top, 200)
                 } else {
                     VStack {
-                        NavigationLink (destination: SummaryView()) {
+                        NavigationLink (destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)) {
                             VStack(alignment: .leading, spacing: 10) {
                                 Text("Current Trip")
                                     .foregroundColor(.black)
@@ -126,37 +133,17 @@ struct DefaultView: View {
                     }
                 }
             }
-            //            .navigationTitle("Budget Trip")
-            //            .navigationBarItems(
-            //                trailing:
-            //                    NavigationLink(
-            //                        destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip),
-            //                        label: {
-            //                            Image(systemName: "plus")
-            //                        })
-            //                    .accentColor(Color("CustomColor"))
-            
-            
-            .navigationTitle("Budget Trip")
-            .navigationBarItems(
-                trailing:
-                    NavigationLink(
-                        destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip),
-                        label: {
-                            Image(systemName: "plus")
-                        })
-                    .accentColor(Color("CustomColor"))
-            )
+            .navigationTitle("My Trips")
         }
     }
 }
 
-struct DefaultView_Previews: PreviewProvider {
+struct MyTrip_Previews: PreviewProvider {
     
     @State private static var dummyData: [Trip] = []
     @State private static var isNoTrip: Bool = false
     
     static var previews: some View {
-        DefaultView(isNoTrip: isNoTrip, trips: dummyData)
+        MyTrip()
     }
 }
