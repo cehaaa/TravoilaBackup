@@ -36,10 +36,8 @@ class NotificationManager {
         
         // Calender
         var dateComponents = DateComponents ()
-        dateComponents.hour = 10
-        dateComponents.minute = 07
-        dateComponents.hour = 10
-        dateComponents.minute = 08
+        dateComponents.hour = 21
+        dateComponents.minute = 00
 //        dateComponents.day = 1
         
 
