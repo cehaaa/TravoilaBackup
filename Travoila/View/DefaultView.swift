@@ -33,9 +33,11 @@ struct DefaultView: View {
     @State var isNoTrip: Bool = true
     @State var trips: [Trip] = []
     
+    @State var currentTrip: Trip = Trip(id: 0, title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
+    
     var body: some View {
         NavigationView {
-            ScrollView {
+            ScrollView(.vertical) {
                 if(isNoTrip){
                     //                    VStack {
                     Text("No Budget Trip Plan")
@@ -56,7 +58,7 @@ struct DefaultView: View {
                         .frame(height: 10)
                         .background(Color.orange)
                     
-                    NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip)){
+                    NavigationLink(destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip, currentTrip: $currentTrip)){
                         Text("Create Budget Trip")
                             .bold()
                             .padding(.horizontal, 30.0)
@@ -67,7 +69,7 @@ struct DefaultView: View {
                     }
                 } else {
                     VStack {
-                        NavigationLink (destination: SummaryView()) {
+                        NavigationLink (destination: SummaryView(trips: $trips, currentTrip: $currentTrip)) {
                             VStack(alignment: .leading, spacing: 10) {
                                 Text("Current Trip")
                                     .foregroundColor(.black)
@@ -114,7 +116,7 @@ struct DefaultView: View {
                         }
                         
                         
-                        NavigationLink(destination: SecondScreen()){
+                        NavigationLink(destination: SecondScreen(trips: $trips, isNoTrip: $isNoTrip, currentTrip: $currentTrip)){
                             Text("Add Expense")
                                 .bold()
                                 .frame(width: 300, height: 50)
@@ -126,22 +128,12 @@ struct DefaultView: View {
                     }
                 }
             }
-            //            .navigationTitle("Budget Trip")
-            //            .navigationBarItems(
-            //                trailing:
-            //                    NavigationLink(
-            //                        destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip),
-            //                        label: {
-            //                            Image(systemName: "plus")
-            //                        })
-            //                    .accentColor(Color("CustomColor"))
-            
             
             .navigationTitle("Budget Trip")
             .navigationBarItems(
                 trailing:
                     NavigationLink(
-                        destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip),
+                        destination: NewTripView(trips: $trips, isNoTrip: $isNoTrip, currentTrip: $currentTrip),
                         label: {
                             Image(systemName: "plus")
                         })
@@ -155,6 +147,7 @@ struct DefaultView_Previews: PreviewProvider {
     
     @State private static var dummyData: [Trip] = []
     @State private static var isNoTrip: Bool = false
+    @State private static var currentTrip: Trip = Trip(id: 0, title: "Default", destination: "Default", startDate: Date(), endDate: Date(), totalBudgetEstimation: 20000, allocations: [])
     
     static var previews: some View {
         DefaultView(isNoTrip: isNoTrip, trips: dummyData)
