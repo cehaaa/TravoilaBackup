@@ -17,7 +17,7 @@ struct SummaryView: View {
     @State var budgetAllocation: String = ""
     
     @Binding var trips: [Trip]
-    @Binding var isNoTrip: Bool
+    @Binding var currentTrip: Trip
     
     var body: some View {
         VStack {
@@ -26,7 +26,7 @@ struct SummaryView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Total Expenses")
                             .font(.callout)
-                        Text("IDR. 5,170")
+                        Text("IDR. 0")
                             .font(.title3)
                             .fontWeight(.bold)
                     }
@@ -291,7 +291,7 @@ struct SummaryView: View {
     
     func createNewAllocation(){
         currentTrip.allocations?.append(
-            Allocation(id: currentTrip.allocations!.count + 1, category: selectedCategory, amount: Int(budgetAllocation) ?? 0, expanses: [])
+            Allocation(id: currentTrip.allocations!.count + 1, category: selectedCategory, amount: Int(budgetAllocation) ?? 0, expenses: [])
         )
         
         newAllocation = false

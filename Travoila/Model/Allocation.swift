@@ -1,20 +1,14 @@
 //
-//  Allocation.swift
+//  Category.swift
 //  Travoila
 //
-//  Created by Patrick Louis on 22/05/22.
+//  Created by christian gouw on 18/05/22.
 //
+import Foundation
 
-import SwiftUI
-
-struct Allocation: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct Allocation_Previews: PreviewProvider {
-    static var previews: some View {
-        Allocation()
-    }
+struct Allocation {
+    var id: Int
+    var category: String
+    var amount: Int
+    var expenses: [Expense]
 }

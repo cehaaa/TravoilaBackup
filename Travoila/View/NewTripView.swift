@@ -8,7 +8,6 @@ import SwiftUI
 
 struct NewTripView: View {
     
-    
     @State var tripTitle: String = ""
     @State var tripDestination: String = ""
     
