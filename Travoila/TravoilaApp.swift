@@ -11,8 +11,8 @@ import SwiftUI
 struct TravoilaApp: App {
     var body: some Scene {
         WindowGroup {
-            SplashScreen()
-//            OnBoardingView()
+//            SplashScreen()
+            OnBoardingView()
 //            LocalNotification()
         }
     }
